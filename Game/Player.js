@@ -10,15 +10,12 @@ var Player = function(name, id){
     this.finalScore = 0;
 };
 
-//Player.prototype.calculateFinalScore = function(){
-    //    this.finalScore = (this.goodAttemps *  ) - (this.goodAttemps);
-    //};
+    Player.prototype.calculateFinalScore = function(){
+        this.finalScore = (this.goodAttempts * 4 ) - (this.wrongAttempts * 2);
+    };
 
     Player.prototype.addAttempts = function(attemptType){
     (attemptType === "wrong") ? this.wrongAttempts++ : this.goodAttempts++;
+
     };
-
-
-
-
 
