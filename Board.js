@@ -77,7 +77,7 @@ Board.prototype.print2 = function(){
                 msj = msj + this.board[i][j].getID().toString() + ' | ';
             }
         }
-        msj = msj +'\n-------------------------\n';
+        msj = msj +'\n---------------------------\n';
     }
     console.log(msj);
 };
