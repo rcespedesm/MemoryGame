@@ -3,18 +3,17 @@
  */
 
 /*
-*   This is the Board class
+ *   This is the Board class
  */
 
 var Board = function(num){
     this.board = [];
     this.num = num;
     this.initialIDs = [];
+    this.stat = false;
     this.fillInitialIDs(this.num);
     this.fillBoard(this.num);
 };
-
-
 
 Board.prototype.fillInitialIDs = function(n){
     var nSize = n * n;
@@ -43,11 +42,40 @@ Board.prototype.fillBoard = function(n){
     }
 };
 
+
+Board.prototype.choose = function(x,y){
+    return this.board[x][y].getID();
+};
+
+Board.prototype.setAsSelected = function(id){
+    for	(var i = 0; i < this.num; i++) {
+        for	(var j = 0; j < this.num; j++) {
+            if(this.board[i][j].getID() === id)
+                this.board[i][j].setStatus();
+        }
+    }
+};
+
 Board.prototype.print = function(){
     var msj = '';
     for	(var i = 0; i < this.num; i++) {
         for	(var j = 0; j < this.num; j++) {
             msj = msj + this.board[i][j].getID().toString() + ' | ';
+        }
+        msj = msj +'\n-------------------------\n';
+    }
+    console.log(msj);
+};
+
+Board.prototype.print2 = function(){
+    var msj = '';
+    for	(var i = 0; i < this.num; i++) {
+        for	(var j = 0; j < this.num; j++) {
+            if(this.board[i][j].getStatus()=== false){
+                msj = msj +  '* | ';
+            }else{
+                msj = msj + this.board[i][j].getID().toString() + ' | ';
+            }
         }
         msj = msj +'\n-------------------------\n';
     }
