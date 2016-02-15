@@ -2,14 +2,11 @@
  * Created by Administrator on 2/5/2016.
  */
 
-/**
- * This funtion is to manage all game
- * @param [int]size
- * @constructor
- */
+
 var Game = function(size){
     this.player = [];
-    this.board = new Board(size);
+    //this.board = new Board(size);
+
     this.winner = "";
     this.util = new Utils();
     this.turn = 0;

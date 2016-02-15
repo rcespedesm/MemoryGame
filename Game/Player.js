@@ -2,6 +2,12 @@
  * Created by Administrator on 2/4/2016.
  */
 
+/**
+ * Player class
+ * @param name
+ * @param id
+ * @constructor
+ */
 var Player = function(name, id){
     this.id = id;
     this.name = name;
@@ -9,7 +15,9 @@ var Player = function(name, id){
     this.goodAttempts = 0;
     this.finalScore = 0;
 };
-
+/**
+ * function for calculate the final score of the player
+ */
     Player.prototype.calculateFinalScore = function(){
         this.finalScore = (this.goodAttempts * 4 ) - (this.wrongAttempts * 2);
     };
