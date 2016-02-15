@@ -12,7 +12,7 @@ var MainController = function(size){
 };
 
 MainController.prototype.move = function(x,y){
-    Game.chooseCards(x,y);
+    Game.chooseCard(x,y);
     this.repBoard = this.game.getBoard();
     return this.repBoard();
 };

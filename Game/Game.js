@@ -6,7 +6,6 @@
 var Game = function(size){
     this.player = [];
     this.board = new Board(size);
-
     this.winner = "";
     this.util = new Utils();
     this.turn = 0;
