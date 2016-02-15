@@ -14,3 +14,6 @@ var menu = "######################### \n" +
            "######################### \n" ;
 
 var player = prompt(menu);
+
+
+var mc = new MainController();
