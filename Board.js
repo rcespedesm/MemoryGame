@@ -7,7 +7,7 @@
  */
 
 var Board = function(num){
-    this.boardDisplayed = [];
+    this.matrixBoard = [];
     this.size = num;
     this.initialIDs = [];
     this.stat = false;
@@ -34,9 +34,9 @@ Board.prototype.fillInitialIDs = function(n){
 Board.prototype.fillBoard = function(n){
     var index = 0;
     for	(var i = 0; i < n; i++) {
-        this.boardDisplayed[i] = [];
+        this.matrixBoard[i] = [];
         for	(var j = 0; j < n; j++) {
-            this.boardDisplayed[i][j] = new Field(i,j,this.initialIDs[index]);
+            this.matrixBoard[i][j] = new Field(i,j,this.initialIDs[index]);
             index++;
         }
     }
@@ -44,14 +44,14 @@ Board.prototype.fillBoard = function(n){
 
 
 Board.prototype.choose = function(x,y){
-    return this.boardDisplayed[x][y].getID();
+    return this.matrixBoard[x][y].getID();
 };
 
 Board.prototype.setAsSelected = function(id){
     for	(var i = 0; i < this.size; i++) {
         for	(var j = 0; j < this.size; j++) {
-            if(this.boardDisplayed[i][j].getID() === id)
-                this.boardDisplayed[i][j].setStatus();
+            if(this.matrixBoard[i][j].getID() === id)
+                this.matrixBoard[i][j].setStatus();
         }
     }
 };
@@ -60,7 +60,7 @@ Board.prototype.print = function(){
     var msj = '';
     for	(var i = 0; i < this.size; i++) {
         for	(var j = 0; j < this.size; j++) {
-            msj = msj + this.boardDisplayed[i][j].getID().toString() + ' | ';
+            msj = msj + this.matrixBoard[i][j].getID().toString() + ' | ';
         }
         msj = msj +'\n-------------------------\n';
     }
@@ -71,10 +71,10 @@ Board.prototype.print2 = function(){
     var msj = '';
     for	(var i = 0; i < this.size; i++) {
         for	(var j = 0; j < this.size; j++) {
-            if(this.boardDisplayed[i][j].getStatus()=== false){
+            if(this.matrixBoard[i][j].getStatus()=== false){
                 msj = msj +  '** | ';
             }else{
-                msj = msj + this.boardDisplayed[i][j].getID().toString() + ' | ';
+                msj = msj + this.matrixBoard[i][j].getID().toString() + ' | ';
             }
         }
         msj = msj +'\n---------------------------\n';

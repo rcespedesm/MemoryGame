@@ -18,7 +18,7 @@ Game.prototype.createPlayers = function(name){
 };
 
 Game.prototype.getBoard = function(){
-    return this.board;
+    return this.board.matrixBoard;
 };
 
 Game.prototype.chooseCard = function(x, y){

@@ -3,23 +3,31 @@
  */
 
 var ConsoleView = function(){
-    this.size = prompt("######################### \n" +
-                       "###    MEMORY GAME    ### \n" +
-                       "###                   ### \n" +
-                       "###    Which size     ### \n" +
-                       "###   the game is?    ### \n" +
-                       "######################### \n");
+    this.size = "";
+    this.mc = new MainController();
+    this.matt = [];
+};
 
-    this.mc = new MainController(this.size);
-    this.boardDisplayed = this.mc.repBoard;
+ConsoleView.prototype.startGame = function() {
+    this.size = prompt("######################### \n" +
+        "###    MEMORY GAME    ### \n" +
+        "###                   ### \n" +
+        "###    Which size     ### \n" +
+        "###   the game is?    ### \n" +
+        "######################### \n");
+    this.mc = new MainController(parseInt(this.size));
+    this.matt = this.mc.game.getBoard();
     this.print2();
 };
+
+
+
 
 ConsoleView.prototype.print = function(){
     var msj = '';
     for	(var i = 0; i < this.size; i++) {
         for	(var j = 0; j < this.size; j++) {
-            msj = msj + this.boardDisplayed[i][j].getID().toString() + ' | ';
+            msj = msj + this.matt[i][j].getID().toString() + ' | ';
         }
         msj = msj +'\n-------------------------\n';
     }
@@ -30,10 +38,10 @@ ConsoleView.prototype.print2 = function(){
     var msj = '';
     for	(var i = 0; i < this.size; i++) {
         for	(var j = 0; j < this.size; j++) {
-            if(this.boardDisplayed[i][j].getStatus()=== false){
+            if(this.matt[i][j].getStatus()=== false){
                 msj = msj +  '* | ';
             }else{
-                msj = msj + this.boardDisplayed[i][j].getID().toString() + ' | ';
+                msj = msj + this.matt[i][j].getID().toString() + ' | ';
             }
         }
         msj = msj +'\n---------------------------\n';
@@ -52,7 +60,7 @@ ConsoleView.prototype.playGame = function(){
 
         turn = turn.split('-');
 
-        this.boardDisplayed = this.mc.move(turn[0],turn[1]);
+        this.matt = this.mc.move(turn[0],turn[1]);
         this.print2();
     }
 };
