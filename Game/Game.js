@@ -16,11 +16,11 @@ var Game = function(size){
 Game.prototype.createPlayers = function(name){
     var id = this.util.generateId();
     this.player.push(new Player(name, id));
-}
+};
 
 Game.prototype.getBoard = function(){
     return this.board;
-}
+};
 
 Game.prototype.turnPlayer = function(card){
     if(this.card === 0){
@@ -34,4 +34,4 @@ Game.prototype.turnPlayer = function(card){
         this.card = 0;
 
     }
-}
+};
