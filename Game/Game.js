@@ -5,7 +5,7 @@
 
 var Game = function(size){
     this.player = [];
-    this.board = new Board(size);
+    this.boardDisplayed = new Board(size);
 
     this.winner = "";
     this.util = new Utils();
@@ -19,17 +19,17 @@ Game.prototype.createPlayers = function(name){
 };
 
 Game.prototype.getBoard = function(){
-    return this.board;
+    return this.boardDisplayed;
 };
 
 Game.prototype.turnPlayer = function(card){
     if(this.card === 0){
-        this.card = this.board.choose(card['x'], card['y']);
+        this.card = this.boardDisplayed.choose(card['x'], card['y']);
     }else{
-        var secondCard = this.board.choose(card['x'], card['y']);
+        var secondCard = this.boardDisplayed.choose(card['x'], card['y']);
         if(secondCard === this.card)
         {
-            this.board.setAsSelected(this.card);
+            this.boardDisplayed.setAsSelected(this.card);
         }
         this.card = 0;
 

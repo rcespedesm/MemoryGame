@@ -6,10 +6,13 @@
  *
  * @constructor
  */
-var MainController = function(){
+var MainController = function(size){
+    this.game = new Game(size);
+    this.repBoard = this.game.getBoard();
+};
 
-    var game = new Game(5);
-
-      game.board.print();
-
+MainController.prototype.move = function(x,y){
+    Game.chooseCards(x,y);
+    this.repBoard = this.game.getBoard();
+    return this.repBoard();
 };
