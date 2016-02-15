@@ -7,10 +7,10 @@
 
 
 var menu = "######################### \n" +
-           "###    MEMORY GAME    ### \n" +
-           "###                   ### \n" +
-           "### 1. Single Player  ### \n" +
-           "### 2. Multiplayer    ### \n" +
+           "###    MEMORY GAME    \n" +
+           "###                   \n" +
+           "### 1. Single Player  \n" +
+           "### 2. Multiplayer    \n" +
            "######################### \n" ;
 
 var player = prompt(menu);
