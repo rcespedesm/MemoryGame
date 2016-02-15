@@ -17,7 +17,7 @@ var Board = function(num){
 
 Board.prototype.fillInitialIDs = function(n){
     var nSize = n * n;
-    for(var i = 0; i < nSize; i++) {
+    for(var i = 10; i < nSize + 10 ; i++) {
         if (i % 2 === 0)
         {
             this.initialIDs[i]=i+1;
@@ -72,7 +72,7 @@ Board.prototype.print2 = function(){
     for	(var i = 0; i < this.num; i++) {
         for	(var j = 0; j < this.num; j++) {
             if(this.board[i][j].getStatus()=== false){
-                msj = msj +  '* | ';
+                msj = msj +  '** | ';
             }else{
                 msj = msj + this.board[i][j].getID().toString() + ' | ';
             }
