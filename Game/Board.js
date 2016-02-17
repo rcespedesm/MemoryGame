@@ -40,8 +40,13 @@ Board.prototype.fillBoard = function(n){
     for	(var i = 0; i < n; i++) {
         this.matrixBoard[i] = [];
         for	(var j = 0; j < n; j++) {
-            this.matrixBoard[i][j] = new Field(i,j,this.initialIDs[index]);
-            index++;
+            if(this.initialIDs[index] === -1){
+                this.matrixBoard[i][j] = new Field(i,j,this.initialIDs[index], true);
+                index++;
+            }else{
+                this.matrixBoard[i][j] = new Field(i,j,this.initialIDs[index], false);
+                index++;
+            }
         }
     }
 };
@@ -49,6 +54,17 @@ Board.prototype.fillBoard = function(n){
 
 Board.prototype.choose = function(x,y){
     return this.matrixBoard[x][y].getID();
+};
+
+Board.prototype.getStatusBoard = function(){
+    var counter = 0;
+    for	(var i = 0; i < this.size; i++) {
+        for	(var j = 0; j < this.size; j++) {
+            if(this.matrixBoard[i][j].status === true)
+                counter++;
+        }
+    }
+    return (this.size * this.size) - counter === 0 ? true : false;
 };
 
 /**
@@ -59,7 +75,15 @@ Board.prototype.setAsSelected = function(id){
     for	(var i = 0; i < this.size; i++) {
         for	(var j = 0; j < this.size; j++) {
             if(this.matrixBoard[i][j].getID() === id)
-                this.matrixBoard[i][j].setStatus();
+                this.matrixBoard[i][j].setStatus(true);
         }
     }
+};
+
+Board.prototype.setTrueFieldStatus = function(x, y){
+    this.matrixBoard[x][y].setStatus(true);
+};
+
+Board.prototype.setFalseFieldStatus = function(x, y){
+    this.matrixBoard[x][y].setStatus(false);
 };

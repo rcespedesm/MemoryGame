@@ -2,12 +2,12 @@
  * Created on 2/10/2016.
  */
 
-var Field = function(x,y,id)
+var Field = function(x,y,id, status)
 {
     this.x = x;
     this.y = y;
     this.id = id;
-    this.status = false;
+    this.status = status;
 };
 
 Field.prototype.getID = function(){

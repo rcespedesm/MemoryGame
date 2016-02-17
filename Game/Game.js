@@ -10,6 +10,8 @@ var Game = function(size){
     this.util = new Utils();
     this.turn = 0;
     this.card = 0;
+    this.cardPosition = [];
+    this.cardPosition2 = [];
 };
 
 Game.prototype.createPlayers = function(name){
@@ -22,26 +24,40 @@ Game.prototype.getBoard = function(){
 };
 
 Game.prototype.chooseCard = function(x, y){
-    var makeTurn = function(turn){
-        return turn === 0 ? 1 : 0;
-    }
-
     if(this.card === 0){
         this.card = this.board.choose(x, y);
+        this.board.setTrueFieldStatus(x, y);
+        this.cardPosition[0] = x;
+        this.cardPosition[1] = y;
     }else{
         var secondCard = this.board.choose(x, y);
-        var attemptType = "wrong";
-        if(secondCard === this.card)
-        {
-            this.board.setAsSelected(this.card);
-            attemptType = "good";
-        }
-        this.card = 0;
-        this.player[this.turn].addAttempts(attemptType);
-        this.turn = makeTurn(this.turn);
+        this.board.setTrueFieldStatus(x, y);
+        this.cardPosition2[0] = x;
+        this.cardPosition2[1] = y;
     }
+};
+
+Game.prototype.compareCards = function(){
+    var makeTurn = function(turn){
+        return turn === 0 ? 1 : 0;
+    };
+    var attemptType = "wrong";
+    if(this.board.matrixBoard[this.cardPosition2[0]][this.cardPosition2[1]].getID() === this.card){
+        this.board.setAsSelected(this.card);
+        attemptType = "good";
+    }else{
+        this.board.setFalseFieldStatus(this.cardPosition[0], this.cardPosition[1]);
+        this.board.setFalseFieldStatus(this.cardPosition2[0], this.cardPosition2[1]);
+    }
+    this.card = 0;
+    this.player[this.turn].addAttempts(attemptType);
+    this.turn = makeTurn(this.turn);
 };
 
 Game.prototype.getPlayerName = function(){
     return this.player[this.turn].name;
+};
+
+Game.prototype.getStatusBoard = function(){
+    return this.board.getStatusBoard();
 };

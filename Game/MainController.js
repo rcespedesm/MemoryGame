@@ -8,9 +8,32 @@
  */
 var MainController = function(size){
     this.game = new Game(size);
+    this.flag = 0;
 };
 
-MainController.prototype.move = function(x,y){
-    this.game.chooseCard(x,y);
+MainController.prototype.move = function(position){
+    position = position.split("-");
+    this.game.chooseCard(position[0],position[1]);
     return this.game.getBoard();
+};
+
+MainController.prototype.compareCards = function(){
+    this.game.compareCards();
+    return this.game.getBoard();
+};
+
+MainController.prototype.getBoard = function(){
+    return this.game.getBoard();
+};
+
+MainController.prototype.setPlayer = function(name){
+    this.game.createPlayers(name);
+};
+
+MainController.prototype.getStatusBoard = function(){
+    return this.game.getStatusBoard();
+};
+
+MainController.prototype.getNamePlayerTurn = function(){
+    return this.game.getPlayerName();
 };
