@@ -65,7 +65,7 @@ ConsoleView.prototype.playGame = function(){
     }
 };
 
-/*var playerMessage = "######################### \n" +
+var playerMessage = "######################### \n" +
            "###    MEMORY GAME    \n" +
            "###                   \n" +
            "### 1. Single Player  \n" +
@@ -81,7 +81,3 @@ var sizeMessage =  "######################### \n" +
  var size = prompt(sizeMessage);
 
 var player = prompt(playerMessage);
-
-
-
-*/
