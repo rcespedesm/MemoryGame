@@ -38,3 +38,4 @@ MainController.prototype.getStatusBoard = function(){
 MainController.prototype.getNamePlayerTurn = function(){
     return this.game.getPlayerName();
 };
+

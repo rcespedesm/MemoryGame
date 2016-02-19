@@ -25,12 +25,16 @@ ConsoleView.prototype.playGame = function(){
             console.clear();
             this.print2();
         }
-        alert("Change turn to: " + this.mc.getNamePlayerTurn());
         this.matt = this.mc.compareCards();
+        alert("Change turn to: " + this.mc.getNamePlayerTurn());
         console.clear();
         this.print2();
     }while(this.mc.getStatusBoard() === false);
+    this.displayWinner(this.mc.getWinner());
+    this.displayFinalScore(this.mc.getPlayers());
 };
+
+
 
 ConsoleView.prototype.getSizeBoard = function(){
     return parseInt(prompt(  "######################### \n" +
@@ -66,6 +70,25 @@ ConsoleView.prototype.getPosition = function(){
         "###    Select a       ### \n" +
         "###  field (E.G 1-2)  ### \n" +
         "######################### \n");
+};
+
+ConsoleView.prototype.displayFinalScore = function(players){
+        console.log("##############################");
+    for(var i = 0; i < 2; i++)
+    {
+        console.log("Player " + i + ":" + players[i].name);
+        console.log("Good Attempts :" + players[i].goodAttempts);
+        console.log("Wrong Attempts :" + players[i].wrongAttempts);
+        console.log("Final Score :" + players[i].finalScore);
+        console.log("##############################");
+    }
+};
+ConsoleView.prototype.displayWinner = function(winner){
+    console.log("##############################");
+    console.log("#####    WINNER..!!      #####");
+    console.log(winner);
+    console.log("#####                    #####");
+    console.log("##############################");
 };
 
 ConsoleView.prototype.print = function(){

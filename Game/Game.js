@@ -61,3 +61,15 @@ Game.prototype.getPlayerName = function(){
 Game.prototype.getStatusBoard = function(){
     return this.board.getStatusBoard();
 };
+
+Game.prototype.setWinner = function(){
+    var score = 0;
+    for(var i = 0; i < 2; i++)
+    {
+        if(score < this.player[i].calculateFinalScore())
+        {
+            score = this.player[i].calculateFinalScore();
+            this.winner = this.player[i].name;
+        }
+    }
+};
