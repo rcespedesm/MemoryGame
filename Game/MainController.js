@@ -39,3 +39,17 @@ MainController.prototype.getNamePlayerTurn = function(){
     return this.game.getPlayerName();
 };
 
+MainController.prototype.getWinner = function(){
+    this.game.setWinner();
+    return this.game.winner;
+};
+
+MainController.prototype.getPlayers = function(){
+    var playerArray = [];
+    for(var i = 0; i < 2; i++)
+    {
+        playerArray.push(this.game.player[i]);
+    }
+    return playerArray;
+};
+
