@@ -14,5 +14,10 @@ var MainController = function(size){
 MainController.prototype.move = function(x,y){
     this.game.chooseCard(x,y);
     this.repBoard = this.game.getBoard();
-    return this.repBoard();
+    return this.repBoard;
+};
+
+MainController.prototype.addPlayer = function(name){
+    this.game.createPlayers(name);
+    return true;
 };

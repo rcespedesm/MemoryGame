@@ -16,6 +16,7 @@ Field.prototype.getID = function(){
 Field.prototype.getStatus = function(){
     return this.status;
 };
-Field.prototype.setStatus = function(status){
-    this.status = status;
+Field.prototype.setStatus = function(){
+    this.status = true;
 };
+

@@ -24,7 +24,7 @@ Game.prototype.getBoard = function(){
 Game.prototype.chooseCard = function(x, y){
     var makeTurn = function(turn){
         return turn === 0 ? 1 : 0;
-    }
+    };
 
     if(this.card === 0){
         this.card = this.board.choose(x, y);

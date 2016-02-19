@@ -4,7 +4,7 @@
 
 var ConsoleView = function(){
     this.size = "";
-    this.mc = new MainController();
+    this.mc = undefined;
     this.matt = [];
 };
 
@@ -17,13 +17,13 @@ ConsoleView.prototype.startGame = function() {
         "######################### \n");
     this.mc = new MainController(parseInt(this.size));
     this.matt = this.mc.game.getBoard();
-    this.print2();
+    this.print();
 };
 
 
 
 
-ConsoleView.prototype.print = function(){
+ConsoleView.prototype.cheat = function(){
     var msj = '';
     for	(var i = 0; i < this.size; i++) {
         for	(var j = 0; j < this.size; j++) {
@@ -34,7 +34,7 @@ ConsoleView.prototype.print = function(){
     console.log(msj);
 };
 
-ConsoleView.prototype.print2 = function(){
+ConsoleView.prototype.print = function(){
     var msj = '';
     for	(var i = 0; i < this.size; i++) {
         for	(var j = 0; j < this.size; j++) {
@@ -49,35 +49,43 @@ ConsoleView.prototype.print2 = function(){
     console.log(msj);
 };
 
-ConsoleView.prototype.playGame = function(){
-    for	(var i = 0; i < this.size; i++) {
-        var turn = prompt("######################### \n" +
+ConsoleView.prototype.playTurn = function(){
+    var turn = prompt("######################### \n" +
             "###    MEMORY GAME    ### \n" +
             "###                   ### \n" +
             "###    Select a       ### \n" +
             "###  field (E.G 1-2)  ### \n" +
             "######################### \n");
 
-        turn = turn.split('-');
+    turn = turn.split('-');
 
-        this.matt = this.mc.move(turn[0],turn[1]);
-        this.print2();
+    this.matt = this.mc.move(turn[0],turn[1]);
+    this.print();
+};
+
+ConsoleView.prototype.iniNumPlayers = function(){
+    var numOfPlayer = prompt("######################### \n" +
+        "###    MEMORY GAME    \n" +
+        "###                   \n" +
+        "### 1. Single Player  \n" +
+        "### 2. Multi Player    \n" +
+        "######################### \n");
+    this.iniPlayer();
+    if(numOfPlayer === '2'){
+        this.iniPlayer();
     }
 };
 
-var playerMessage = "######################### \n" +
-           "###    MEMORY GAME    \n" +
-           "###                   \n" +
-           "### 1. Single Player  \n" +
-           "### 2. Multi Player    \n" +
-           "######################### \n" ;
-
-var sizeMessage =  "######################### \n" +
-            "###    MEMORY GAME    \n" +
-            "###                   \n" +
-            "### Which size        \n" +
-            "###      is the game? \n" +
-            "######################### \n" ;
- var size = prompt(sizeMessage);
-
-var player = prompt(playerMessage);
+ConsoleView.prototype.iniPlayer = function(){
+    var name = prompt("######################### \n" +
+        "###    MEMORY GAME    \n" +
+        "###                   \n" +
+        "### Insert the name   \n" +
+        "###  of the player    \n" +
+        "######################### \n");
+    if(this.mc.addPlayer(name)){
+        console.log("Player Created");
+    }else{
+        console.log("Player do not Created");
+    }
+};
