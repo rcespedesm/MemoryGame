@@ -6,10 +6,18 @@
  *
  * @constructor
  */
-var MainController = function(){
+var MainController = function(size){
+    this.game = new Game(size);
+    this.repBoard = this.game.getBoard();
+};
 
-    var game = new Game(5);
+MainController.prototype.move = function(x,y){
+    this.game.chooseCard(x,y);
+    this.repBoard = this.game.getBoard();
+    return this.repBoard;
+};
 
-      game.board.print();
-
+MainController.prototype.addPlayer = function(name){
+    this.game.createPlayers(name);
+    return true;
 };

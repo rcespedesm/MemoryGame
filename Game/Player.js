@@ -24,6 +24,5 @@ var Player = function(name, id){
 
     Player.prototype.addAttempts = function(attemptType){
     (attemptType === "wrong") ? this.wrongAttempts++ : this.goodAttempts++;
-
     };
 

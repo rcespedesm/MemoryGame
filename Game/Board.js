@@ -17,7 +17,7 @@ var Board = function(num){
 
 Board.prototype.fillInitialIDs = function(n){
     var nSize = n * n;
-    for(var i = 10; i < nSize + 10 ; i++) {
+    for(var i = 0; i < nSize; i++) {
         if (i % 2 === 0)
         {
             this.initialIDs[i]=i+1;
@@ -31,6 +31,10 @@ Board.prototype.fillInitialIDs = function(n){
     this.initialIDs = this.initialIDs.sort(function() {return Math.random() - 0.5});
 };
 
+/**
+ *
+ * @param n
+ */
 Board.prototype.fillBoard = function(n){
     var index = 0;
     for	(var i = 0; i < n; i++) {
@@ -47,6 +51,10 @@ Board.prototype.choose = function(x,y){
     return this.matrixBoard[x][y].getID();
 };
 
+/**
+ *
+ * @param id
+ */
 Board.prototype.setAsSelected = function(id){
     for	(var i = 0; i < this.size; i++) {
         for	(var j = 0; j < this.size; j++) {
@@ -54,30 +62,4 @@ Board.prototype.setAsSelected = function(id){
                 this.matrixBoard[i][j].setStatus();
         }
     }
-};
-
-Board.prototype.print = function(){
-    var msj = '';
-    for	(var i = 0; i < this.size; i++) {
-        for	(var j = 0; j < this.size; j++) {
-            msj = msj + this.matrixBoard[i][j].getID().toString() + ' | ';
-        }
-        msj = msj +'\n-------------------------\n';
-    }
-    console.log(msj);
-};
-
-Board.prototype.print2 = function(){
-    var msj = '';
-    for	(var i = 0; i < this.size; i++) {
-        for	(var j = 0; j < this.size; j++) {
-            if(this.matrixBoard[i][j].getStatus()=== false){
-                msj = msj +  '** | ';
-            }else{
-                msj = msj + this.matrixBoard[i][j].getID().toString() + ' | ';
-            }
-        }
-        msj = msj +'\n---------------------------\n';
-    }
-    console.log(msj);
 };
