@@ -1,6 +1,7 @@
 /**
  * Created by Administrator on 2/5/2016.
- */
+*/
+
 
 var ConsoleView = function(){
     this.mc = "";
@@ -10,10 +11,11 @@ var ConsoleView = function(){
 ConsoleView.prototype.startGame = function() {
     this.mc = new MainController(this.getSizeBoard());
     this.matt = this.mc.getBoard();
-    var numberPlayer = this.getNumberPlayer();
-    for(var i = 1; i <= numberPlayer ; i++)
+    var numberPlayer = 2;//this.getNumberPlayer();
+    this.mc.setPlayer(this.getNamePlayer(1));
+    if(numberPlayer === 2)
     {
-        this.mc.setPlayer(this.getNamePlayer(i));
+        this.mc.setPlayer(this.getNamePlayer(2));
     }
 };
 
@@ -37,14 +39,21 @@ ConsoleView.prototype.playGame = function(){
 
 
 ConsoleView.prototype.getSizeBoard = function(){
-    return parseInt(prompt(  "######################### \n" +
+    var number = parseInt(prompt(  "######################### \n" +
         "###    MEMORY GAME   \n" +
         "###                  \n" +
         "###    Which size    \n" +
         "###   the game is?   \n" +
         "######################### \n"));
+    if (!/^([1]{1}[0]{1}|[2-9]{1})$/.test(number))
+    {
+        alert("please insert numbers in range of 2-10");
+        return this.getSizeBoard();
+    }else{
+        return number;
+    }
 };
-
+/*
 ConsoleView.prototype.getNumberPlayer = function(){
     return parseInt(prompt(  "######################### \n" +
         "###    MEMORY GAME   \n" +
@@ -53,23 +62,42 @@ ConsoleView.prototype.getNumberPlayer = function(){
         "###  1. One Player   \n" +
         "###  2. Two Players  \n" +
         "######################### \n"));
-};
+};*/
 
 ConsoleView.prototype.getNamePlayer = function(index){
-    return prompt( "######################### \n" +
+    //^[a-zA-Z0-9]{1,15}$
+
+    var namePlayer = prompt( "######################### \n" +
         "###    MEMORY GAME   \n" +
         "###  Enter Name of   \n" +
         "###     Player  " + index +"     \n" +
         "######################### \n");
+    if (!/^([a-zA-Z0-9]{1,15})$/.test(namePlayer))
+    {
+        alert("please insert a name without space and max 15 characters");
+        return this.getNamePlayer(index);
+    }else{
+        return namePlayer;
+    }
 };
 
 ConsoleView.prototype.getPosition = function(){
-    return prompt("######################### \n" +
+    //^([0-this.sizeBoard]{1})-{1}([0-this.sizeBoard]{1})$
+    var position = prompt("######################### \n" +
         "###    MEMORY GAME    ### \n" +
         "###                   ### \n" +
         "###    Select a       ### \n" +
         "###  field (E.G 1-2)  ### \n" +
         "######################### \n");
+    var regularEx = new RegExp('^([0-' + (this.matt.length - 1) 
+        + ']{1})-{1}([0-' + (this.matt.length - 1) + ']{1})$');
+    if (!regularEx.test(position))
+    {
+        alert("please insert a name without space and max 15 characters");
+        return this.getPosition();
+    }else{
+        return position;
+    }
 };
 
 ConsoleView.prototype.displayFinalScore = function(players){

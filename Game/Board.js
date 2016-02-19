@@ -10,7 +10,7 @@ var Board = function(num){
     this.matrixBoard = [];
     this.size = num;
     this.initialIDs = [];
-    this.stat = false;
+    //this.stat = false;
     this.fillInitialIDs(this.size);
     this.fillBoard(this.size);
 };
