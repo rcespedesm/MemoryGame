@@ -67,18 +67,6 @@ Board.prototype.getStatusBoard = function(){
     return (this.size * this.size) - counter === 0 ? true : false;
 };
 
-/**
- *
- * @param id
- */
-Board.prototype.setAsSelected = function(id){
-    for	(var i = 0; i < this.size; i++) {
-        for	(var j = 0; j < this.size; j++) {
-            if(this.matrixBoard[i][j].getID() === id)
-                this.matrixBoard[i][j].setStatus(true);
-        }
-    }
-};
 
 Board.prototype.setTrueFieldStatus = function(x, y){
     this.matrixBoard[x][y].setStatus(true);

@@ -43,7 +43,6 @@ Game.prototype.compareCards = function(){
     };
     var attemptType = "wrong";
     if(this.board.matrixBoard[this.cardPosition2[0]][this.cardPosition2[1]].getID() === this.card){
-        this.board.setAsSelected(this.card);
         attemptType = "good";
     }else{
         this.board.setFalseFieldStatus(this.cardPosition[0], this.cardPosition[1]);
