@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="Utils.js"></script>
+    <script src="Player.js"></script>
+    <script src="Fieldy.js"></script>
+    <script src="Board.js"></script>
+    <script src="Game.js"></script>
+    <script src="MainController.js"></script>
+    <script src="ConsoleView.js"></script>
+    <script src="jquery-1.12.1.js"></script>
+    <script src="HTMLView.js"></script>
+</head>
+<body>
+
+<script type="text/javascript">
+    var view = new HTMLView();
+    /*(function(){
+        view.startGame();
+    })();*/
+</script>
+<p class="INIT">Size: <input type="text" id="SIZE" value=""></p>
+<p class="INIT">Player1: <input type="text" id="PLAYER1" value=""></p>
+<p class="INIT">Player2: <input type="text" id="PLAYER2" value=""></p>
+<button id = "START" class="INIT" onclick = "view.startGame()">Start</button>
+
+</body>
+</html>
