@@ -22,8 +22,7 @@ Utils.prototype.generateId = function(){
     return randomId;
 };
  /**
-  * This function is to verify that number is not exist in the array
-  *
+  * This function is to verify that number not exist in the array
   * @param number is the value to verify
   * @returns {number} if the number exist in the array return 0 else return true
   */
@@ -33,9 +32,7 @@ Utils.prototype.verifyIds = function(number){
     else{
         for(var i = 0 ; i < this.ids.length ; i++){
             if(this.ids[i] === number)
-            {
                 return 1;
-            }
         }
         return 0;
     }
