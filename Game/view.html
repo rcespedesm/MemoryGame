@@ -12,8 +12,12 @@
     <script src="ConsoleView.js"></script>
     <script src="jquery-1.12.1.js"></script>
     <script src="HTMLView.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+
+<h1 id = "TITLE">Memory Game</h1><br><br>
+
 
 <script type="text/javascript">
     var view = new HTMLView();
@@ -21,10 +25,22 @@
         view.startGame();
     })();*/
 </script>
-<p class="INIT">Size: <input type="text" id="SIZE" value=""></p>
+<p class="INIT">   Size: <input type="number" id="SIZE" value="2" min="2" max="10" ></p>
 <p class="INIT">Player1: <input type="text" id="PLAYER1" value=""></p>
 <p class="INIT">Player2: <input type="text" id="PLAYER2" value=""></p>
-<button id = "START" class="INIT" onclick = "view.startGame()">Start</button>
+<p class="INIT"><button id = "START" onclick = "view.startGame()">Start</button></p>
+
+<table id="ScoreTable">
+    <tr>
+       <th>Players</th> <th>Good</th> <th>Wrong</th>
+    </tr>
+    <tr>
+        <td id = "P1N"></td> <td id = "P1G"></td> <td id = "P1W"></td>
+    </tr>
+    <tr>
+        <td id = "P2N"></td> <td id = "P2G"></td> <td id = "P2W"></td>
+    </tr>
+</table>
 
 </body>
 </html>
