@@ -8,8 +8,6 @@
  */
 var MainController = function(size){
     this.game = new Game(size);
-
-    //this.flag = 0;
 };
 
 MainController.prototype.move = function(position){

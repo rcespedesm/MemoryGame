@@ -2,7 +2,6 @@
  * Created by Administrator on 2/5/2016.
  */
 
-
 var Game = function(size){
     this.player = [];
     this.board = new Board(size);
@@ -25,12 +24,12 @@ Game.prototype.getBoard = function(){
 
 Game.prototype.chooseCard = function(x, y){
         if(this.card === 0){
-            this.card = this.board.choose(x, y);
+            this.card = this.board.chooseField(x, y);
             this.board.setTrueFieldStatus(x, y);
             this.cardPosition[0] = x;
             this.cardPosition[1] = y;
         }else{
-            var secondCard = this.board.choose(x, y);
+            var secondCard = this.board.chooseField(x, y);
             this.board.setTrueFieldStatus(x, y);
             this.cardPosition2[0] = x;
             this.cardPosition2[1] = y;

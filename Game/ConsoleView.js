@@ -13,6 +13,7 @@ ConsoleView.prototype.startGame = function() {
     this.matt = this.mc.getBoard();
     var numberPlayer = 2;//this.getNumberPlayer();
     this.mc.setPlayer(this.getNamePlayer(1));
+
     if(numberPlayer === 2)
     {
         this.mc.setPlayer(this.getNamePlayer(2));
