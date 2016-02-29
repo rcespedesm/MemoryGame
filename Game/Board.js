@@ -17,6 +17,11 @@ var Board = function(size){
     this.fillBoard();
 };
 
+/**
+ * This function is to fill an array with pairs number and sorted randomly way
+ * when there is an odd array, the value that does not have its pair, take -1
+ * value
+ */
 Board.prototype.fillInitialIDs = function(){
     var totalSize = this.size * this.size;
     for(var i = 0; i < totalSize; i++) {
@@ -29,8 +34,11 @@ Board.prototype.fillInitialIDs = function(){
         function() {return Math.random() - 0.5});
 };
 
-
-
+/**
+ * This function is to fill board with Fields objects that have how id
+ * the initialIDs array values and status false.
+ * when the ID is -1 the status is true.
+ */
 Board.prototype.fillBoard = function(){
     var index = 0;
     for	(var i = 0; i < this.size; i++) {
@@ -44,10 +52,17 @@ Board.prototype.fillBoard = function(){
     }
 };
 
+
 Board.prototype.chooseField = function(x, y){
     return this.matrixBoard[x][y].getID();
 };
 
+/**
+ * this function is to count true status fields, if the count is the same of
+ * total fields, this functions return true, that means that all fields have
+ * been displayed.
+ * @returns {boolean}
+ */
 Board.prototype.getStatusBoard = function(){
     var counter = 0;
     for	(var i = 0; i < this.size; i++) {
@@ -65,6 +80,10 @@ Board.prototype.setTrueFieldStatus = function(x, y){
 
 Board.prototype.setFalseFieldStatus = function(x, y){
     this.matrixBoard[x][y].setStatus(false);
+};
+
+Board.prototype.getIdField = function(x, y){
+    return this.matrixBoard[x][y].getID();
 };
 
 
