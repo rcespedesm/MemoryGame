@@ -3,13 +3,13 @@
  */
 
 /**
- *
+ * This class is to handle all functions of game.
+ * this function is used by views
+ * @param {int}size
  * @constructor
  */
 var MainController = function(size){
     this.game = new Game(size);
-
-    //this.flag = 0;
 };
 
 MainController.prototype.move = function(position){
@@ -40,16 +40,10 @@ MainController.prototype.getNamePlayerTurn = function(){
 };
 
 MainController.prototype.getWinner = function(){
-    this.game.setWinner();
-    return this.game.winner;
+    return this.game.setWinner();
 };
 
 MainController.prototype.getPlayers = function(){
-    var playerArray = [];
-    for(var i = 0; i < 2; i++)
-    {
-        playerArray.push(this.game.player[i]);
-    }
-    return playerArray;
+    return this.game.getArrayPlayers();
 };
 

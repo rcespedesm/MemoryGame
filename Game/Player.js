@@ -3,9 +3,12 @@
  */
 
 /**
- * Player class
- * @param name
- * @param id
+ * This class contains the attributes of each player
+ * @param {string}name
+ * @param {int} id
+ * @param {int} wrongAttempts
+ * @param {int} goodAttempts
+ * @param {int} final score
  * @constructor
  */
 var Player = function(name, id){
@@ -15,14 +18,21 @@ var Player = function(name, id){
     this.goodAttempts = 0;
     this.finalScore = 0;
 };
+
 /**
- * function for calculate the final score of the player
+ * This function calculate and return
+ * the final score of one player
+ * @returns {int} number
  */
     Player.prototype.calculateFinalScore = function(){
         this.finalScore = (this.goodAttempts * 4 ) - (this.wrongAttempts * 2);
         return this.finalScore;
     };
 
+/**
+ * This function add the attempt type of the player (good or wrong)
+ * @param {string} attemptType
+ */
     Player.prototype.addAttempts = function(attemptType){
     (attemptType === "wrong") ? this.wrongAttempts++ : this.goodAttempts++;
     };
