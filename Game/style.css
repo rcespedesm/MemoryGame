@@ -10,11 +10,6 @@ body {
     margin: 0;
 }
 
-.INIT {
-    margin: 5px 43% 5px ;
-}
-
-
 .CSSTableGenerator {
     padding:0px;
     margin: 0 auto;
@@ -89,7 +84,7 @@ body {
 
 #ScoreTable {
     display: none;
-    margin:0 auto;
-    border: 3px;
+    /*margin:0 auto;*/
+    /*border: 3px;*/
     text-align: center;
 }

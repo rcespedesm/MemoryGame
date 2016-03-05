@@ -26,6 +26,8 @@ var Player = function(name, id){
  */
     Player.prototype.calculateFinalScore = function(){
         this.finalScore = (this.goodAttempts * 4 ) - (this.wrongAttempts * 2);
+        if(this.finalScore <= 0)
+            this.finalScore = 0;
         return this.finalScore;
     };
 

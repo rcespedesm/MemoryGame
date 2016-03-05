@@ -64,7 +64,7 @@ Game.prototype.compareCards = function(){
         return turn === 0 ? 1 : 0;
     };
     var attemptType = "wrong";
-    if(this.board.getIdField(this.cardPosition[0], this.cardPosition[1])
+    if(this.board.getIdField(this.cardPosition2[0], this.cardPosition2[1])
         === this.card){
             attemptType = "good";
         }else{
@@ -86,6 +86,10 @@ Game.prototype.getStatusBoard = function(){
     return this.board.getStatusBoard();
 };
 
+Game.prototype.setScore = function(){
+    this.player[0].calculateFinalScore();
+    this.player[1].calculateFinalScore();
+}
 /**
  * This function compares final score of each player and return the name or draw
  * game.

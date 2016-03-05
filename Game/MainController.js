@@ -20,6 +20,7 @@ MainController.prototype.move = function(position){
 
 MainController.prototype.compareCards = function(){
     this.game.compareCards();
+    this.game.setScore();
     return this.game.getBoard();
 };
 

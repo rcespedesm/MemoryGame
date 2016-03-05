@@ -17,6 +17,8 @@ HTMLView.prototype.displayPlayers = function(){
     $('#P2G').text(this.mc.getPlayers()[1].goodAttempts);
     $('#P1W').text(this.mc.getPlayers()[0].wrongAttempts);
     $('#P2W').text(this.mc.getPlayers()[1].wrongAttempts);
+    $('#P1S').text(this.mc.getPlayers()[0].finalScore);
+    $('#P2S').text(this.mc.getPlayers()[1].finalScore);
 };
 
 
@@ -30,7 +32,7 @@ HTMLView.prototype.startGame = function(){
         view.matt = view.mc.getBoard();//this
         view.mc.setPlayer($("#PLAYER1").val());
         view.mc.setPlayer($("#PLAYER2").val());
-        $(".INIT").hide(1000);
+        $("#data").hide(1000);
         view.displayPlayers();
         view.initTable(size);
         $('#ScoreTable').css('display','table');
@@ -97,10 +99,11 @@ HTMLView.prototype.initTable =  function(size)
     $('body').append(matrix);
 };
 
-
 HTMLView.prototype.printWinner = function(){
-    var player1 = view.mc.getPlayers()[0].name +' -> '+  view.mc.getPlayers()[0].calculateFinalScore();
-    var player2 = view.mc.getPlayers()[1].name +' -> '+  view.mc.getPlayers()[1].calculateFinalScore();
-    alert('The winner is "' + view.mc.getWinner() + '" with scores:\n' + player1 + '\n' + player2);
-    location.reload();
+    var win = view.mc.getWinner();
+    if(win.indexOf('No Winner') !== -1)
+        var winEl = $('<h2 align="center" class="bg-primary">NO WINNER</></h2>');
+    else
+        var winEl = $('<h2 align="center" class="bg-primary">Congratulations...!! The Winner is: '+win+'</span></h2>');
+    $('body').append(winEl);
 };

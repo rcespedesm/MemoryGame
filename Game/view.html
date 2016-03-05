@@ -12,31 +12,60 @@
     <script src="ConsoleView.js"></script>
     <script src="jquery-1.12.1.js"></script>
     <script src="HTMLView.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 
-<h1 id = "TITLE">Memory Game</h1><br>
+<h1 id = "TITLE"><img src="images/memory_game.jpg" alt="Mountain View" style="width:525px;height:175px;"></h1><br>
 
 <script type="text/javascript">
     var view = new HTMLView();
 </script>
-<p class="INIT">   Size: <input type="number" id="SIZE" value="2" min="2" max="10" ></p>
-<p class="INIT">Player1: <input type="text" id="PLAYER1" value=""></p>
-<p class="INIT">Player2: <input type="text" id="PLAYER2" value=""></p>
-<p class="INIT"><button id = "START" onclick = "view.startGame()">Start</button></p>
+<div id="data" class="form-group">
 
-<table id="ScoreTable">
-    <tr>
-       <th>Players</th> <th>Good</th> <th>Wrong</th>
-    </tr>
-    <tr>
-        <td id = "P1N"></td> <td id = "P1G"></td> <td id = "P1W"></td>
-    </tr>
-    <tr>
-        <td id = "P2N"></td> <td id = "P2G"></td> <td id = "P2W"></td>
-    </tr>
-</table><br>
+
+    <div class="col-xs-5">
+    </div>
+    <div class="col-xs-2">
+        <p>   Size: <input class="form-control" type="number" id="SIZE" value="2" min="2" max="10" ></p>
+        <p>Player1: <input class="form-control" type="text" id="PLAYER1" value=""></p>
+        <p>Player2: <input class="form-control" type="text" id="PLAYER2" value=""></p>
+        <p><button id = "START" onclick = "view.startGame()" class="btn btn-primary">Start</button></p>
+    </div>
+</div>
+<div id="ScoreTable"  class="container">
+    <div class="col-xs-4">
+    </div>
+    <div class="form-group">
+        <div class="col-xs-1">
+            <p class="bg-primary">Players</p>
+            <p id = "P1N"></p>
+            <p id = "P2N"></p>
+        </div>
+        <div class="col-xs-1">
+            <p class="bg-primary">Good</p>
+            <p id = "P1G"></p>
+            <p id = "P2G">
+        </div>
+        <div class="col-xs-1">
+            <p class="bg-primary">Wrong</p>
+            <p id = "P1W"></p>
+            <p id = "P2W"></p>
+        </div>
+        <div class="col-xs-1">
+            <p class="bg-primary">Score</p>
+            <p id = "P1S"></p>
+            <p id = "P2S"></p>
+        </div>
+    </div>
+    <div class="col-xs-4">
+    </div>
+
+</div>
+
 
 </body>
 </html>
