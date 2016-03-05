@@ -8,16 +8,15 @@ var HTMLView = function(){
 
     this.turn = 1;
     this.firstCard = '';
-    this.players = [];
 };
 
 HTMLView.prototype.displayPlayers = function(){
-    $('#P1N').text(this.players[0].name);
-    $('#P2N').text(this.players[1].name);
-    $('#P1G').text(this.players[0].goodAttempts);
-    $('#P2G').text(this.players[1].goodAttempts);
-    $('#P1W').text(this.players[0].wrongAttempts);
-    $('#P2W').text(this.players[1].wrongAttempts);
+    $('#P1N').text(this.mc.getPlayers()[0].name);
+    $('#P2N').text(this.mc.getPlayers()[1].name);
+    $('#P1G').text(this.mc.getPlayers()[0].goodAttempts);
+    $('#P2G').text(this.mc.getPlayers()[1].goodAttempts);
+    $('#P1W').text(this.mc.getPlayers()[0].wrongAttempts);
+    $('#P2W').text(this.mc.getPlayers()[1].wrongAttempts);
 };
 
 
@@ -32,7 +31,6 @@ HTMLView.prototype.startGame = function(){
         view.mc.setPlayer($("#PLAYER1").val());
         view.mc.setPlayer($("#PLAYER2").val());
         $(".INIT").hide(1000);
-        view.players = view.mc.getPlayers();
         view.displayPlayers();
         view.initTable(size);
         $('#ScoreTable').css('display','table');
@@ -41,34 +39,34 @@ HTMLView.prototype.startGame = function(){
     }
 };
 
-HTMLView.prototype.displayField = function(c){
-    var pos = c.target.id.split('-');
+HTMLView.prototype.displayField = function(){
+    var e = $(this);
+    var pos = e.attr('id').split('-');
 
 
     if(view.matt[pos[0]][pos[1]].getStatus() === false){
 
-        c.target.innerText = view.matt[pos[0]][pos[1]].getID();
+        e.text(view.matt[pos[0]][pos[1]].getID());
 
         if(view.turn === 1){
-            view.matt = view.mc.move(c.target.id);
+            view.matt = view.mc.move(e.attr('id'));
             view.turn++;
-            view.firstCard = document.getElementById(c.target.id);
+            view.firstCard = $('#'+e.attr('id'));
         }else{
-            view.matt = view.mc.move(c.target.id);
+            view.matt = view.mc.move(e.attr('id'));
             view.matt = view.mc.compareCards();
 
             if(view.matt[pos[0]][pos[1]].getStatus() === false){
 
                 setTimeout(function(){
-                    c.target.innerText = "---";
-                },1500);
+                    e.text('---');
+                },1100);
 
                 setTimeout(function(){
-                    view.firstCard.innerText = "---";
-                },1500);
+                    view.firstCard.text('---');
+                },1100);
 
             }
-            view.players = view.mc.getPlayers();
             view.displayPlayers();
             view.turn--;
         }
@@ -81,7 +79,7 @@ HTMLView.prototype.displayField = function(c){
 };
 
 
-/*HTMLView.prototype.initTable2 =  function(size)
+HTMLView.prototype.initTable =  function(size)
 {
     var matrix = $('<TABLE id = "table" class="CSSTableGenerator"></TABLE>');
     for (var a = 0; a < size; a++)
@@ -90,38 +88,19 @@ HTMLView.prototype.displayField = function(c){
 
         for (var i = 0; i < size; i++)
         {
-            var td = $('<TD>@@</TD>');
+            var td = $('<TD id="'+i+'-'+a+'">---</TD>');
             td.on('click', view.displayField);
             tr.append(td);
         }
         matrix.append(tr)
     }
     $('body').append(matrix);
-};*/
-
-HTMLView.prototype.initTable =  function(size)
-{
-    var matrix = document.createElement("TABLE");
-    matrix.id = "MATRIX";
-    matrix.className = "CSSTableGenerator";
-    for (var a = 0; a < size; a++)
-    {
-        var tr = document.createElement("TR");
-        matrix.appendChild(tr);
-        for (var i = 0; i < size; i++)
-        {
-            var td = document.createElement("TD");
-            tr.appendChild(td);
-            td.id = a + '-' + i;
-            td.innerText = "---";
-            td.addEventListener('click', this.displayField);
-        }
-    }
-    $('body').append(matrix);
-
 };
 
 
 HTMLView.prototype.printWinner = function(){
-    alert('The winner is :' + view.mc.getWinner() + ' with score' + view.mc.getWinner().calculateFinalScore());
+    var player1 = view.mc.getPlayers()[0].name +' -> '+  view.mc.getPlayers()[0].calculateFinalScore();
+    var player2 = view.mc.getPlayers()[1].name +' -> '+  view.mc.getPlayers()[1].calculateFinalScore();
+    alert('The winner is "' + view.mc.getWinner() + '" with scores:\n' + player1 + '\n' + player2);
+    location.reload();
 };

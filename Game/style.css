@@ -15,8 +15,6 @@ body {
 }
 
 
-
-
 .CSSTableGenerator {
     padding:0px;
     margin: 0 auto;
@@ -92,4 +90,6 @@ body {
 #ScoreTable {
     display: none;
     margin:0 auto;
+    border: 3px;
+    text-align: center;
 }
